@@ -31,7 +31,7 @@ def create_chroma_db(csv_file, db_path, collection_name, embedding_model_name, b
 
     model = SentenceTransformer(embedding_model_name)
 
-    with open(csv_file, 'r', encoding='utf-8') as csvfile:  # Handle encoding
+    with open(csv_file, 'r', encoding='utf-8', errors='replace') as csvfile:  # Handle encoding
         reader = csv.DictReader(csvfile)  # Read as dictionaries
 
         embeddings = []
