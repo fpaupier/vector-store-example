@@ -29,10 +29,13 @@ def create_chroma_db(csv_file, db_path, collection_name, embedding_model_name, b
         collection = client.get_collection(name=collection_name)
         print(f"Collection {collection_name} loaded from disk.")
 
+    # Fetch existing IDs from the collection
+    existing_ids = set(collection.get().get('ids', []))
+
     model = SentenceTransformer(embedding_model_name)
 
-    with open(csv_file, 'r', encoding='utf-8', errors='replace') as csvfile:  # Handle encoding
-        reader = csv.DictReader(csvfile)  # Read as dictionaries
+    with open(csv_file, 'r', encoding='utf-8', errors='replace') as csvfile:
+        reader = csv.DictReader(csvfile)
 
         embeddings = []
         metadatas = []
@@ -40,21 +43,26 @@ def create_chroma_db(csv_file, db_path, collection_name, embedding_model_name, b
 
         for row in reader:
             try:
+                book_id = str(row['book_id'])
+                if book_id in existing_ids:
+                    print(f"Skipping book ID {book_id} as it already exists in the database.")
+                    continue
+
                 description = row["book_desc"]
                 if description:
                     embedding = model.encode(description)
                     embeddings.append(embedding)
-                    metadata = row  # Entire row as metadata
+                    metadata = row
                     metadatas.append(metadata)
-                    ids.append(str(row['book_id']))
+                    ids.append(book_id)
                 else:
-                    print(f"Warning: Missing description for book ID: {row['book_id']}")
+                    print(f"Warning: Missing description for book ID: {book_id}")
 
-                if len(embeddings) == batch_size:  # Add in batches
+                if len(embeddings) == batch_size:
                     try:
                         collection.add(embeddings=embeddings, metadatas=metadatas, ids=ids)
                         print(f"Added a batch of {batch_size} books")
-                        embeddings = []  # Clear the batch
+                        embeddings = []
                         metadatas = []
                         ids = []
 
@@ -64,8 +72,7 @@ def create_chroma_db(csv_file, db_path, collection_name, embedding_model_name, b
             except Exception as e:
                 print(f"Error processing book ID: {row['book_id']}: {e}")
 
-        # Add any remaining books after processing the loop
-        if embeddings:  # Check if there are any remaining embeddings
+        if embeddings:
             try:
                 collection.add(embeddings=embeddings, metadatas=metadatas, ids=ids)
                 print(f"Added the last batch of {len(embeddings)} books")
@@ -75,6 +82,5 @@ def create_chroma_db(csv_file, db_path, collection_name, embedding_model_name, b
     print("ChromaDB database created/updated successfully.")
 
 
-# Run the database creation
 if __name__ == '__main__':
     create_chroma_db(CSV_PATH, DB_PATH, COLLECTION_NAME, EMBEDDING_MODEL, BATCH_SIZE)
