@@ -7,7 +7,7 @@ identify the closest relevant books from a user query.
 
 We use Python >= 3.9, the vector store engine is [ChromaDB](https://docs.trychroma.com/docs/overview/getting-started) -
 using the simple local on-disk storage option with sqlite backend. For the embeddings, we compute them locally
-with [SBERT](https://sbert.net/docs/sentence_transformer/pretrained_models.html) models.
+with [SBERT](https://sbert.net/docs/sentence_transformer/pretrained_models.html) models. Especially, we use `all-MiniLM-L6-v2` with 384 dimensions.
 
 1. Create a python virtual environment
 
