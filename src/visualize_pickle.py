@@ -1,7 +1,7 @@
 import pickle
 
 
-def visualize_pickle_file(pickle_file_path):
+def visualize_pickle_file(pickle_file_path: str):
     """Opens and visualizes the content of a pickle file."""
 
     try:
@@ -37,5 +37,5 @@ def visualize_pickle_file(pickle_file_path):
 
 
 if __name__ == "__main__":
-    pickle_file_path = "./books_db/2f0e7074-3fc8-49b0-b1ef-2b9a9d9d65dd/index_metadata.pickle"  # Replace with the actual path
-    visualize_pickle_file(pickle_file_path)
+    fpath = "./books_db/2f0e7074-3fc8-49b0-b1ef-2b9a9d9d65dd/index_metadata.pickle"  # Replace with the actual path
+    visualize_pickle_file(fpath)

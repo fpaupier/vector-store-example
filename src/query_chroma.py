@@ -1,8 +1,7 @@
 import chromadb
 from sentence_transformers import SentenceTransformer
 
-# Configuration (adjust as needed)
-DB_PATH = "books_db"
+DB_PATH = "../books_db"
 COLLECTION_NAME = "books"
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 

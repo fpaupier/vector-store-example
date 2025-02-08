@@ -1,5 +1,5 @@
-import numpy as np  # Often used with binary files containing numerical data
-import struct  # For unpacking binary data if needed
+import numpy as np
+import struct
 
 
 def investigate_bin_file(bin_file_path: str, data_type=None, count=None):

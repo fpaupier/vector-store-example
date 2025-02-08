@@ -4,10 +4,10 @@ import chromadb
 from sentence_transformers import SentenceTransformer
 
 # Configuration (adjust as needed)
-DATA_DIR = "data"  # Subdirectory containing your CSV
+DATA_DIR = "../data"  # Subdirectory containing your CSV
 CSV_FILE = "mini_books.csv"
 CSV_PATH = os.path.join(DATA_DIR, CSV_FILE)
-DB_PATH = "books_db"
+DB_PATH = "../books_db"
 COLLECTION_NAME = "books"
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 BATCH_SIZE = 100

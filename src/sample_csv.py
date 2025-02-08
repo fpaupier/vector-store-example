@@ -1,4 +1,3 @@
-import os
 import csv
 import random
 
@@ -37,6 +36,6 @@ def sample_csv(input_csv, output_csv, sample_percentage=0.05):
 
 
 if __name__ == "__main__":
-    input_csv_path = "data/book_data.csv"
-    output_csv_path = "data/mini_books.csv"
+    input_csv_path = "../data/book_data.csv"
+    output_csv_path = "../data/mini_books.csv"
     sample_csv(input_csv_path, output_csv_path)
