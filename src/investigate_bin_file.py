@@ -50,7 +50,7 @@ def investigate_bin_file(bin_file_path: str, data_type=None, count=None):
 
 if __name__ == '__main__':
     # Example Usage 1 (Reading as bytes):
-    bin_file_path = "./books_db/2f0e7074-3fc8-49b0-b1ef-2b9a9d9d65dd/length.bin"  # Replace with the actual path
+    bin_file_path = "./books_db/95528cf9-91a8-4342-a440-e7b859d6d1d4/length.bin"  # Replace with the actual path
     investigate_bin_file(bin_file_path)
 
     # Example Usage 2 (Reading as specific data type, e.g., float32):
