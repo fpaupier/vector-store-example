@@ -1,3 +1,18 @@
+# <center> 📚 ChromaDB book recommender example </center>
+<p align="center">
+  <a href="https://pypi.org/project/chromadb"><img src="https://img.shields.io/badge/chromadb-vector%20store-blue" alt="ChromaDB Vector Store"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python->=3.9-brightgreen.svg" alt="Python Version"></a>
+  <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"></a>
+</p>
+
+<br/>
+
+<p align="center">
+  <i>Visualizing ChromaDB in action: Managing vector embeddings for book recommendations.</i>
+</p>
+
+<br/>
+
 # Vector store example
 
 A minimal repo to explore the internals of Chroma DB through a book recommender system using sentence embeddings to
